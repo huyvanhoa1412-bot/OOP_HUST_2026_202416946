@@ -1,0 +1,7 @@
+Question 1: What happens if users choose "Cancel"?
+Answer: In the ChoosingOption.java program, if the user clicks "Cancel", the option variable will not equal JOptionPane.YES_OPTION (which is 0). Because the code uses the condition (option == JOptionPane.YES_OPTION ? "Yes" : "No"), it will evaluate to false and print: "You've chosen: No".
+
+Question 2: How to customize the options to users?
+Answer: 
+- To show only "Yes" and "No", add the parameter JOptionPane.YES_NO_OPTION to the showConfirmDialog method.
+- To use fully custom text like "I do" and "I don't", we must use the JOptionPane.showOptionDialog method and pass an array of Strings: Object[] options = {"I do", "I don't"};
