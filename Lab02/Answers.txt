@@ -1,0 +1,1 @@
+NO, Java does not allow this directly. In Java, constructor overloading is based on the parameter list's signature (number, type, and order of parameters). Both DigitalVideoDisc(String title) and DigitalVideoDisc(String category) have the exact same signature: taking a single String argument. The Java compiler cannot distinguish between them and will throw an error.
