@@ -1,42 +1,48 @@
 package hust.soict.dsai.aims.store;
 
-// Bắt buộc phải có dòng này để lấy thông tin cái đĩa từ thư mục disc sang
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
+import java.util.ArrayList;
 
 public class Store {
-    public static final int MAX_ITEMS_IN_STORE = 100;
-    private DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[MAX_ITEMS_IN_STORE];
-    private int qtyInStore = 0;
+    // Dùng ArrayList chứa Media
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
-    // Thêm đĩa vào kho
-    public void addDVD(DigitalVideoDisc dvd) {
-        if (qtyInStore < MAX_ITEMS_IN_STORE) {
-            itemsInStore[qtyInStore] = dvd;
-            qtyInStore++;
-            System.out.println("DVD '" + dvd.getTitle() + "' da duoc them vao kho.");
+    // Thêm mặt hàng vào kho
+    public void addMedia(Media media) {
+        if (!itemsInStore.contains(media)) {
+            itemsInStore.add(media);
+            System.out.println(media.getTitle() + " da duoc them vao kho.");
         } else {
-            System.out.println("Kho da day, khong the them.");
+            System.out.println(media.getTitle() + " da co san trong kho!");
         }
     }
 
-    // Xóa đĩa khỏi kho
-    public void removeDVD(DigitalVideoDisc dvd) {
-        boolean found = false;
-        for (int i = 0; i < qtyInStore; i++) {
-            if (itemsInStore[i] == dvd) {
-                // Đẩy các đĩa phía sau lên lấp chỗ trống
-                for (int j = i; j < qtyInStore - 1; j++) {
-                    itemsInStore[j] = itemsInStore[j + 1];
-                }
-                itemsInStore[qtyInStore - 1] = null;
-                qtyInStore--;
-                System.out.println("DVD '" + dvd.getTitle() + "' da bi xoa khoi kho.");
-                found = true;
-                break;
+    // Xóa mặt hàng khỏi kho
+    public void removeMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            itemsInStore.remove(media);
+            System.out.println(media.getTitle() + " da bi xoa khoi kho.");
+        } else {
+            System.out.println("Khong tim thay " + media.getTitle() + " trong kho.");
+        }
+    }
+
+    // Hàm tiện ích để in danh sách kho (phục vụ cho menu Console lát nữa)
+    public void printStore() {
+        System.out.println("***********************STORE***********************");
+        for (int i = 0; i < itemsInStore.size(); i++) {
+            System.out.println((i + 1) + ". " + itemsInStore.get(i).toString());
+        }
+        System.out.println("***************************************************");
+    }
+
+    // Hàm tiện ích để lấy ra Media nếu biết tên
+    public Media fetchMedia(String title) {
+        for (Media media : itemsInStore) {
+            if (media.getTitle().toLowerCase().equals(title.toLowerCase())) {
+                return media;
             }
         }
-        if (!found) {
-            System.out.println("Khong tim thay DVD trong kho.");
-        }
+        return null;
     }
 }

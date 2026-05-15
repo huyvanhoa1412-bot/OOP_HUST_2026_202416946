@@ -1,7 +1,7 @@
 package hust.soict.dsai.test.store;
 
 // Phải import cả Store và DigitalVideoDisc vì nó nằm ở 2 thư mục khác hoàn toàn
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.store.Store;
 
 public class StoreTest {

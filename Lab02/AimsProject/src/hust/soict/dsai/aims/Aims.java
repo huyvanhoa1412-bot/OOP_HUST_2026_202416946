@@ -2,7 +2,7 @@ package hust.soict.dsai.aims;
 
 // Bắt buộc phải có 2 dòng import này để gọi Cart và DigitalVideoDisc từ thư mục khác sang
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class Aims {
     public static void main(String[] args) {
